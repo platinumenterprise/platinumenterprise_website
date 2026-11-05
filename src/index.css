@@ -967,9 +967,6 @@ section {
   .mobile-header-toggle {
     display: none !important;
   }
-  .mobile-floating-dock {
-    display: none !important;
-  }
 }
 
 /* Mega Dropdown Responsive Sizing & Alignment */
@@ -990,7 +987,16 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.65rem;
-  z-index: 120;
+  z-index: 1001;
+}
+
+.navbar-mega-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
 }
 
 @media (max-width: 1240px) {
@@ -1017,9 +1023,6 @@ section {
     display: none !important;
   }
   .mobile-header-toggle {
-    display: flex !important;
-  }
-  .mobile-floating-dock {
     display: flex !important;
   }
 }
@@ -1502,6 +1505,33 @@ footer {
   transition: color 0.2s ease;
 }
 
+/* Footer Contact Info */
+.footer-contact-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1.75rem;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-contact-item:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
 .footer-divisions-bar {
   display: flex;
   align-items: center;
@@ -1711,7 +1741,7 @@ footer {
 
 @media (max-width: 959px) {
   .floating-actions-aside {
-    bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
     right: calc(16px + env(safe-area-inset-right, 0px)) !important;
     gap: 10px !important;
   }
@@ -1719,7 +1749,7 @@ footer {
 
 @media (max-width: 480px) {
   .floating-actions-aside {
-    bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
     right: calc(14px + env(safe-area-inset-right, 0px)) !important;
   }
   .floating-scroll-top-btn {
@@ -1914,5 +1944,291 @@ footer {
   user-select: none;
   -webkit-user-select: none;
 }
+
+/* ==========================================================================
+   RESPONSIVE CENTERED HEADERS & JUSTIFIED CONTENT TYPOGRAPHY
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  /* Founder Narrative Monograph */
+  .founder-narrative-col {
+    align-items: center !important;
+  }
+  .founder-pull-quote {
+    border-left: none !important;
+    border-top: 2px solid #2563eb !important;
+    border-bottom: 2px solid #2563eb !important;
+    padding: 1.25rem 0 !important;
+    text-align: justify !important;
+    text-justify: inter-word;
+  }
+  .founder-pull-quote p {
+    text-align: justify !important;
+    text-justify: inter-word;
+  }
+  .founder-narrative-col p {
+    text-align: justify !important;
+    text-justify: inter-word;
+  }
+  .founder-ambition-box {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .founder-stats-4col {
+    justify-content: center !important;
+  }
+  .founder-stats-4col > div {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Editorial statement & narrative */
+  .editorial-hero-grid {
+    text-align: center !important;
+  }
+  .editorial-statement-col {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .editorial-statement-col .section-tag-tri {
+    margin: 0 auto 1.25rem auto !important;
+  }
+  .editorial-statement-col h2 {
+    text-align: center !important;
+  }
+  .editorial-narrative-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .editorial-narrative-col p {
+    text-align: justify !important;
+    text-justify: inter-word;
+  }
+  .editorial-features-2x2 {
+    justify-items: center !important;
+    width: 100%;
+  }
+  .editorial-features-2x2 > div {
+    justify-content: center !important;
+  }
+  .editorial-narrative-col .btn-pill-light {
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Global section headers, tags, titles remain centered */
+  .section-header-editorial,
+  .category-section-header,
+  .category-hero-header,
+  .legacy-header {
+    text-align: center !important;
+  }
+
+  .section-tag-tri,
+  .legacy-badge-tri {
+    display: inline-flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .section-title-editorial,
+  .category-section-h2,
+  .legacy-main-title,
+  .legacy-sub-heading {
+    text-align: center !important;
+  }
+
+  /* Body content & descriptions: Justified for clean, balanced edges */
+  .hero-lead-text,
+  .section-desc-editorial,
+  .category-section-header p,
+  .category-hero-header p,
+  .legacy-intro-text,
+  .foundational-pillar-card p,
+  .promise-card-item p,
+  .contact-cards-4col > .glass-card p,
+  .sla-highlight-card p,
+  .footer-main-grid > div p {
+    text-align: justify !important;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
+
+  .category-hero-header > div:last-child {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* Category Page: Authorized OEM Partners & Brands Carousel Header Centered */
+  .category-brands-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: center !important;
+    margin-bottom: 1.25rem !important;
+    gap: 0.85rem !important;
+  }
+
+  .category-brands-title-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .category-brands-title-block > div:first-child {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .category-brands-title-block h2 {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .category-brands-arrows {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* Foundational Pillars cards (About Us) */
+  .foundational-pillar-card h4,
+  .foundational-pillar-card div {
+    text-align: center !important;
+  }
+
+  /* Customer Promises cards (About Us) */
+  .promise-card-item h4,
+  .promise-card-item div {
+    text-align: center !important;
+  }
+  .promise-icon-box {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Contact Channel Cards */
+  .contact-cards-4col > .glass-card > div > div:first-child {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .contact-cards-4col > .glass-card h3,
+  .contact-cards-4col > .glass-card span {
+    text-align: center !important;
+  }
+  .contact-cards-4col > .glass-card a,
+  .contact-cards-4col > .glass-card button {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Dispatch SLA Highlight Cards */
+  .sla-highlight-card > div > div:first-child {
+    justify-content: center !important;
+  }
+  .sla-highlight-card h3 {
+    text-align: center !important;
+  }
+
+  /* Multi-brand philosophy tier cards */
+  .promises-grid-4col > div {
+    text-align: center !important;
+  }
+
+  /* Footer Columns: Centered brand/headers, justified body */
+  .footer-main-grid {
+    text-align: center !important;
+  }
+  .footer-main-grid > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .footer-main-grid > div > a:first-child {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .footer-main-grid > div h4 {
+    text-align: center !important;
+  }
+  .footer-main-grid > div > div:last-child {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+  }
+  .footer-main-grid ul {
+    align-items: center !important;
+    padding: 0 !important;
+  }
+  .footer-main-grid ul li {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .footer-main-grid .footer-quick-link {
+    justify-content: center !important;
+  }
+  /* Footer Contact Us Section Centered */
+  .footer-contact-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .footer-contact-heading {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .footer-contact-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .footer-contact-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .footer-contact-item span {
+    text-align: center !important;
+  }
+  .footer-contact-btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 320px !important;
+  }
+  .footer-divisions-bar {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  footer .container > div:last-child {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
 
 

@@ -163,7 +163,7 @@ ${notes}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
                 <span className="section-tag-tri" style={{ margin: 0 }}>
-                  <Sparkles size={13} color="#2563eb" /> SUPER SARAS WHOLESALE DESK
+                  <Sparkles size={13} color="#2563eb" /> PLATINUM WHOLESALE DESK
                 </span>
                 <span className="badge badge-emerald">
                   59-MIN DISPATCH SLA

@@ -14,10 +14,10 @@ export default function EditorialPhilosophy({ onOpenQuote }) {
       <div className="container reveal-on-scroll">
         <div className="editorial-hero-grid">
           {/* Left Column: Monumental Editorial Statement */}
-          <div className="reveal-on-scroll">
+          <div className="reveal-on-scroll editorial-statement-col">
             <div className="section-tag-tri" style={{ marginBottom: '1.25rem' }}>
               <Sparkles size={13} color="#2563eb" />
-              <span>THE SUPER SARAS ADVANTAGE</span>
+              <span>THE PLATINUM ADVANTAGE</span>
             </div>
 
             <h2 className="font-display" style={{

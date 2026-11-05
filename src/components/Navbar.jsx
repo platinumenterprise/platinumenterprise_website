@@ -36,6 +36,7 @@ export default function Navbar({
   const dropdownTimeoutRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const mobileToggleRef = useRef(null);
+  const desktopDropdownRef = useRef(null);
 
   // Close menus on route change
   useEffect(() => {
@@ -43,6 +44,33 @@ export default function Navbar({
     setMobileProductsOpen(false);
     setDesktopDropdownOpen(false);
   }, [location.pathname]);
+
+  // Close desktop dropdown when clicking outside or pressing Escape
+  useEffect(() => {
+    if (!desktopDropdownOpen) return;
+
+    const handleDesktopOutsideClick = (event) => {
+      if (desktopDropdownRef.current && !desktopDropdownRef.current.contains(event.target)) {
+        setDesktopDropdownOpen(false);
+      }
+    };
+
+    const handleDesktopKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setDesktopDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleDesktopOutsideClick);
+    document.addEventListener('touchstart', handleDesktopOutsideClick, { passive: true });
+    window.addEventListener('keydown', handleDesktopKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleDesktopOutsideClick);
+      document.removeEventListener('touchstart', handleDesktopOutsideClick);
+      window.removeEventListener('keydown', handleDesktopKeyDown);
+    };
+  }, [desktopDropdownOpen]);
 
   // Close mobile drawer when clicking or tapping outside of it, or pressing Escape
   useEffect(() => {
@@ -117,7 +145,7 @@ export default function Navbar({
         right: 0,
         width: '100%',
         height: '80px',
-        zIndex: 100,
+        zIndex: 1000,
         background: 'rgba(255, 255, 255, 0.96)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
@@ -134,7 +162,7 @@ export default function Navbar({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          overflow: 'hidden'
+          overflow: 'visible'
         }}>
           
           {/* Left: Brand Identity with prominent unboxed logo and split full-caps typography */}
@@ -264,6 +292,7 @@ export default function Navbar({
 
             {/* 3. Products Dropdown Trigger */}
             <div 
+              ref={desktopDropdownRef}
               style={{ position: 'relative' }}
               onMouseEnter={handleMouseEnterProducts}
               onMouseLeave={handleMouseLeaveProducts}
@@ -687,129 +716,6 @@ export default function Navbar({
         />
       )}
 
-      {/* Floating Mobile Dock */}
-      <nav 
-        aria-label="Mobile Navigation Dock"
-        style={{
-          position: 'fixed',
-          bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 95,
-          width: 'calc(100% - 32px)',
-          maxWidth: '430px',
-          background: 'rgba(255, 255, 255, 0.96)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
-          borderRadius: '9999px',
-          border: '1px solid rgba(255, 255, 255, 0.95)',
-          boxShadow: '0 16px 36px -6px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.9)',
-          padding: '0.45rem 0.65rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}
-        className="mobile-floating-dock"
-      >
-        <Link
-          to="/"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.2rem',
-            padding: '0.35rem 0.75rem',
-            borderRadius: '9999px',
-            textDecoration: 'none',
-            color: isHome ? '#182d61' : '#64748b',
-            background: isHome ? 'rgba(24, 45, 97, 0.09)' : 'transparent',
-            transition: 'all 0.2s'
-          }}
-        >
-          <Home size={18} color={isHome ? '#182d61' : '#64748b'} />
-          <span style={{ fontSize: '0.62rem', fontWeight: 700 }}>Home</span>
-        </Link>
-
-        <Link
-          to="/about"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.2rem',
-            padding: '0.35rem 0.75rem',
-            borderRadius: '9999px',
-            textDecoration: 'none',
-            color: isAbout ? '#182d61' : '#64748b',
-            background: isAbout ? 'rgba(24, 45, 97, 0.09)' : 'transparent',
-            transition: 'all 0.2s'
-          }}
-        >
-          <Building2 size={18} color={isAbout ? '#182d61' : '#64748b'} />
-          <span style={{ fontSize: '0.62rem', fontWeight: 700 }}>About</span>
-        </Link>
-
-        {/* Center elevated quote button */}
-        <div style={{ position: 'relative', marginTop: '-20px' }}>
-          <button
-            onClick={() => onOpenQuote()}
-            style={{
-              width: '46px',
-              height: '46px',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #182d61, #d97706)',
-              border: '3px solid #ffffff',
-              color: '#ffffff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 8px 20px rgba(24, 45, 97, 0.4)',
-              cursor: 'pointer'
-            }}
-            title="Instant BOQ Quote"
-          >
-            <Sparkles size={20} />
-          </button>
-        </div>
-
-        <Link
-          to="/dispatch"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.2rem',
-            padding: '0.35rem 0.75rem',
-            borderRadius: '9999px',
-            textDecoration: 'none',
-            color: isDispatch ? '#182d61' : '#64748b',
-            background: isDispatch ? 'rgba(24, 45, 97, 0.09)' : 'transparent',
-            transition: 'all 0.2s'
-          }}
-        >
-          <Clock size={18} color={isDispatch ? '#182d61' : '#64748b'} />
-          <span style={{ fontSize: '0.62rem', fontWeight: 700 }}>Dispatch</span>
-        </Link>
-
-        <Link
-          to="/contact"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.2rem',
-            padding: '0.35rem 0.75rem',
-            borderRadius: '9999px',
-            textDecoration: 'none',
-            color: isContact ? '#182d61' : '#64748b',
-            background: isContact ? 'rgba(24, 45, 97, 0.09)' : 'transparent',
-            transition: 'all 0.2s'
-          }}
-        >
-          <PhoneCall size={18} color={isContact ? '#182d61' : '#64748b'} />
-          <span style={{ fontSize: '0.62rem', fontWeight: 700 }}>Contact</span>
-        </Link>
-      </nav>
     </>
   );
 }

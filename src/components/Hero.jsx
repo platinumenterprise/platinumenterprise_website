@@ -63,27 +63,6 @@ export default function Hero({ companyInfo, stats, onOpenQuote }) {
         width: '100%'
       }}>
         
-        {/* Heritage Tag */}
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(226, 232, 240, 0.9)',
-          boxShadow: '0 4px 15px rgba(15, 23, 42, 0.05)',
-          padding: '0.45rem 1.15rem',
-          borderRadius: '9999px',
-          fontSize: '0.75rem',
-          fontWeight: 800,
-          letterSpacing: '0.12em',
-          color: '#0f172a',
-          marginBottom: '1.75rem',
-          textTransform: 'uppercase'
-        }}>
-          <Sparkles size={14} color="#f59e0b" />
-          <span>SUPER SARAS • CHENNAI, TAMIL NADU</span>
-        </div>
 
         {/* Monumental Headline */}
         <h1 className="font-display" style={{
@@ -117,7 +96,7 @@ export default function Hero({ companyInfo, stats, onOpenQuote }) {
         </div>
 
         {/* Refined Narrative */}
-        <p style={{
+        <p className="hero-lead-text" style={{
           fontSize: 'clamp(1rem, 1.3vw, 1.18rem)',
           color: '#334155',
           lineHeight: 1.7,

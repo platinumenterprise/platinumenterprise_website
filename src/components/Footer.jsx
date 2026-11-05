@@ -4,7 +4,6 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  ArrowUp, 
   ShieldCheck,
   Sparkles,
   ArrowRight,
@@ -15,10 +14,6 @@ import {
 export default function Footer({ companyInfo, onOpenQuote }) {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer style={{
@@ -58,38 +53,66 @@ export default function Footer({ companyInfo, onOpenQuote }) {
           
           {/* Col 1: Company Profile & Verification */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <div style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: '#ffffff',
-                boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08), 0 0 0 1px #e2e8f0',
-                padding: '4px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
+            <Link 
+              to="/" 
+              style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '0.75rem', 
+                textDecoration: 'none',
+                marginBottom: '1.25rem' 
+              }}
+            >
+              {companyInfo?.logo && (
                 <img 
                   src={companyInfo.logo} 
-                  alt={companyInfo.parentBrand} 
-                  style={{ width: '85%', height: '85%', objectFit: 'contain' }}
+                  alt={companyInfo?.name || "Platinum Enterprise"} 
+                  style={{ 
+                    height: '52px', 
+                    width: 'auto', 
+                    maxHeight: '52px', 
+                    objectFit: 'contain', 
+                    display: 'block', 
+                    flexShrink: 0 
+                  }}
                 />
-              </div>
-              <div>
-                <span className="font-display" style={{
-                  fontSize: '1.15rem',
-                  fontWeight: 800,
-                  color: '#0f172a',
-                  letterSpacing: '0.04em'
+              )}
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'center', 
+                lineHeight: 0.95 
+              }}>
+                <span style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: '1.35rem',
+                  fontWeight: 900,
+                  letterSpacing: '-0.01em',
+                  color: '#182d61',
+                  textTransform: 'uppercase',
+                  lineHeight: 0.96,
+                  margin: 0,
+                  padding: 0,
+                  display: 'block'
                 }}>
-                  PLATINUM <span className="text-tri-gradient">ENTERPRISE</span>
+                  PLATINUM
                 </span>
-                <p style={{ fontSize: '0.68rem', color: '#2563eb', fontWeight: 800, letterSpacing: '0.06em' }}>
-                  SUPER SARAS
-                </p>
+                <span style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: '1.2rem',
+                  fontWeight: 900,
+                  letterSpacing: '0.005em',
+                  color: '#182d61',
+                  textTransform: 'uppercase',
+                  lineHeight: 0.96,
+                  margin: 0,
+                  padding: 0,
+                  display: 'block'
+                }}>
+                  ENTERPRISE
+                </span>
               </div>
-            </div>
+            </Link>
 
             <p style={{
               fontSize: '0.85rem',
@@ -138,7 +161,7 @@ export default function Footer({ companyInfo, onOpenQuote }) {
               <li>
                 <Link to="/about" className="footer-quick-link">
                   <ChevronRight size={13} className="footer-link-chevron" />
-                  <span>About Super Saras</span>
+                  <span>About Us</span>
                 </Link>
               </li>
               <li>
@@ -200,69 +223,40 @@ export default function Footer({ companyInfo, onOpenQuote }) {
             </div>
           </div>
 
-          {/* Col 3: Contact Us */}
-          <div>
-            <h4 className="font-display" style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a', marginBottom: '1.25rem' }}>
+          {/* Col 4: Contact Us */}
+          <div className="footer-contact-col">
+            <h4 className="font-display footer-contact-heading" style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a', marginBottom: '1.25rem' }}>
               CONTACT US
             </h4>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginBottom: '1.75rem' }}>
+            <div className="footer-contact-list">
               <a 
                 href={`tel:${companyInfo.phones[0]}`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.65rem',
-                  color: '#0f172a',
-                  textDecoration: 'none',
-                  fontSize: '0.9rem',
-                  fontWeight: 700
-                }}
+                className="footer-contact-item"
               >
                 <Phone size={16} color="#2563eb" />
-                <span>{companyInfo.phones[0]}</span>
+                <span style={{ color: '#0f172a', fontWeight: 700, fontSize: '0.9rem' }}>{companyInfo.phones[0]}</span>
               </a>
 
               <a 
                 href={`tel:${companyInfo.phones[1]}`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.65rem',
-                  color: '#0f172a',
-                  textDecoration: 'none',
-                  fontSize: '0.9rem',
-                  fontWeight: 700
-                }}
+                className="footer-contact-item"
               >
                 <Phone size={16} color="#2563eb" />
-                <span>{companyInfo.phones[1]}</span>
+                <span style={{ color: '#0f172a', fontWeight: 700, fontSize: '0.9rem' }}>{companyInfo.phones[1]}</span>
               </a>
 
               <a 
                 href={`mailto:${companyInfo.email}`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.65rem',
-                  color: '#475569',
-                  textDecoration: 'none',
-                  fontSize: '0.85rem'
-                }}
+                className="footer-contact-item"
               >
                 <Mail size={16} color="#059669" />
-                <span>{companyInfo.email}</span>
+                <span style={{ color: '#475569', fontSize: '0.85rem' }}>{companyInfo.email}</span>
               </a>
 
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.65rem',
-                color: '#64748b',
-                fontSize: '0.85rem'
-              }}>
+              <div className="footer-contact-item">
                 <MapPin size={16} color="#d97706" />
-                <span>{companyInfo.location}</span>
+                <span style={{ color: '#64748b', fontSize: '0.85rem' }}>{companyInfo.location}</span>
               </div>
 
               {companyInfo.instagram && (
@@ -270,25 +264,17 @@ export default function Footer({ companyInfo, onOpenQuote }) {
                   href={companyInfo.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.65rem',
-                    color: '#dd2a7b',
-                    textDecoration: 'none',
-                    fontSize: '0.85rem',
-                    fontWeight: 600
-                  }}
+                  className="footer-contact-item"
                 >
                   <Instagram size={16} color="#dd2a7b" />
-                  <span>{companyInfo.instagramHandle || '@super_saras25'}</span>
+                  <span style={{ color: '#dd2a7b', fontSize: '0.85rem', fontWeight: 600 }}>{companyInfo.instagramHandle || '@super_saras25'}</span>
                 </a>
               )}
             </div>
 
             <button
               onClick={onOpenQuote}
-              className="btn-tri-gradient"
+              className="btn-tri-gradient footer-contact-btn"
               style={{ width: '100%', justifyContent: 'center' }}
             >
               <Sparkles size={14} />
@@ -337,30 +323,10 @@ export default function Footer({ companyInfo, onOpenQuote }) {
           color: '#64748b'
         }}>
           <div>
-            © {new Date().getFullYear()} Platinum Enterprise. Super Saras. All rights reserved.
+            © {new Date().getFullYear()} Platinum Enterprise. All rights reserved.
             <span style={{ margin: '0 0.5rem' }}>•</span>
             <span>Corporate Profile 2026 - 27</span>
           </div>
-
-          <button
-            onClick={scrollToTop}
-            style={{
-              background: '#f8fafc',
-              border: '1px solid #e2e8f0',
-              color: '#0f172a',
-              borderRadius: '50%',
-              width: '36px',
-              height: '36px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              transition: 'all 0.2s'
-            }}
-            title="Back to top"
-          >
-            <ArrowUp size={16} color="#2563eb" />
-          </button>
         </div>
 
       </div>

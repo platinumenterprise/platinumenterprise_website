@@ -97,7 +97,7 @@ export default function CategoryPage({ companyInfo, onOpenQuote }) {
         position: 'relative'
       }}>
         <div className="container reveal-on-scroll">
-          <div style={{ maxWidth: '820px' }}>
+          <div className="category-hero-header" style={{ maxWidth: '820px' }}>
             <div className="section-tag-tri" style={{ marginBottom: '0.65rem' }}>
               <Sparkles size={12} color="#2563eb" />
               <span>DIVISION {category.num} • AUTHORIZED WHOLESALE DISTRIBUTION</span>
@@ -150,7 +150,7 @@ export default function CategoryPage({ companyInfo, onOpenQuote }) {
       }}>
         <div className="container reveal-on-scroll">
           
-          <div style={{
+          <div className="category-brands-header" style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-end',
@@ -158,7 +158,7 @@ export default function CategoryPage({ companyInfo, onOpenQuote }) {
             flexWrap: 'wrap',
             gap: '1rem'
           }}>
-            <div>
+            <div className="category-brands-title-block">
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2563eb', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.25rem' }}>
                 <Layers size={13} /> AUTHORIZED OEM PARTNERS
               </div>
@@ -168,7 +168,7 @@ export default function CategoryPage({ companyInfo, onOpenQuote }) {
             </div>
 
             {/* Left and Right Arrow Buttons */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <div className="category-brands-arrows" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <button
                 onClick={() => scrollBrands('left')}
                 aria-label="Scroll brands left"

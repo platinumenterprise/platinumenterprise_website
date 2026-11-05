@@ -71,7 +71,7 @@ export default function AboutPage({ companyData, onOpenQuote }) {
               {strengths.map((strength, sIdx) => (
                 <div
                   key={strength.num}
-                  className={`reveal-on-scroll reveal-delay-${(sIdx % 3) + 1}`}
+                  className={`reveal-on-scroll reveal-delay-${(sIdx % 3) + 1} foundational-pillar-card`}
                   style={{
                     background: '#f8fafc',
                     borderRadius: '20px',
@@ -238,8 +238,8 @@ export default function AboutPage({ companyData, onOpenQuote }) {
               {customerPromise.map((promise, pIdx) => {
                 const IconComponent = promiseIcons[promise.icon] || ShieldCheck;
                 return (
-                  <div key={promise.title} className={`reveal-on-scroll reveal-delay-${pIdx + 1}`} style={{ textAlign: 'left' }}>
-                    <div style={{
+                  <div key={promise.title} className={`reveal-on-scroll reveal-delay-${pIdx + 1} promise-card-item`}>
+                    <div className="promise-icon-box" style={{
                       width: '44px',
                       height: '44px',
                       borderRadius: '12px',

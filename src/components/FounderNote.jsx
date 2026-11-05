@@ -133,33 +133,17 @@ export default function FounderNote({ founder = {} }) {
               }}>
                 {founderTitle}
               </div>
-
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.3rem 0.85rem',
-                borderRadius: '9999px',
-                background: 'rgba(37, 99, 235, 0.08)',
-                color: '#1d4ed8',
-                fontSize: '0.72rem',
-                fontWeight: 800,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase'
-              }}>
-                SUPER SARAS GROUP • CHENNAI
-              </div>
             </div>
           </div>
 
           {/* Right Column: Narrative Monograph */}
           <div
-            className="reveal-on-scroll reveal-delay-2"
+            className="reveal-on-scroll reveal-delay-2 founder-narrative-col"
             style={{ display: 'flex', flexDirection: 'column' }}
           >
 
             {/* Styled Pull-Quote */}
-            <div style={{
+            <div className="founder-pull-quote" style={{
               position: 'relative',
               paddingLeft: '1.75rem',
               borderLeft: '3px solid #2563eb',
@@ -199,7 +183,7 @@ export default function FounderNote({ founder = {} }) {
             </div>
 
             {/* Ambition Statement - Open Editorial Divider Style */}
-            <div style={{
+            <div className="founder-ambition-box" style={{
               margin: '2rem 0',
               padding: '1.5rem 0',
               borderTop: '1px solid rgba(226, 232, 240, 0.9)',
