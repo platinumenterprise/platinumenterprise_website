@@ -1,0 +1,474 @@
+/* ==========================================================================
+   OUR JOURNEY THROUGH GENERATIONS - 50-YEAR FAMILY LEGACY TIMELINE
+   Modern, Pure White Executive Theme - No Yellow/Off-White Tints
+   ========================================================================== */
+
+.legacy-timeline-section {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 3.5rem;
+  padding: 1rem 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Header & Badges */
+.legacy-header {
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 1rem;
+}
+
+.legacy-badge-tri {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #182d61;
+  margin-bottom: 1.15rem;
+}
+
+/* Title with Sleek Decorative Side Lines */
+.legacy-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.legacy-title-line {
+  flex: 1;
+  max-width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #cbd5e1 50%, #182d61 100%);
+  border-radius: 2px;
+}
+
+.legacy-title-line.line-right {
+  background: linear-gradient(90deg, #182d61 0%, #cbd5e1 50%, transparent 100%);
+}
+
+.legacy-main-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin: 0;
+  white-space: normal;
+  text-align: center;
+}
+
+/* Subtitle */
+.legacy-sub-heading {
+  font-size: clamp(0.78rem, 1.2vw, 0.92rem);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin: 0.4rem 0 1.25rem 0;
+}
+
+.navy-bullet {
+  color: #94a3b8;
+  display: inline-block;
+  margin: 0 0.35rem;
+}
+
+/* Narrative Intro - Strictly No Border, Clean Pure Text */
+.legacy-intro-box {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.legacy-intro-text {
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  line-height: 1.75;
+  color: #475569;
+  margin: 0;
+  text-align: center;
+}
+
+.legacy-intro-text strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* Mobile Scroll Helpers */
+.legacy-mobile-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0 1rem;
+}
+
+.legacy-scroll-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #182d61;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.legacy-scroll-btn:hover {
+  background: #182d61;
+  color: #ffffff;
+  border-color: #182d61;
+}
+
+.legacy-scroll-hint {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Timeline Viewport */
+.legacy-timeline-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding-top: 2rem;
+  overflow: hidden;
+}
+
+/* Continuous Horizontal Connecting Track (Desktop) */
+.legacy-track-line {
+  position: absolute;
+  top: 2.5rem;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(24, 45, 97, 0.05) 0%,
+    #182d61 15%,
+    #2563eb 50%,
+    #182d61 85%,
+    rgba(24, 45, 97, 0.05) 100%
+  );
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* Cards Grid (5 Milestones in a Row on Desktop) */
+.legacy-cards-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.15rem;
+  align-items: stretch;
+}
+
+/* Wrapper per Card with Node on Top */
+.legacy-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Node & Drop Stem */
+.legacy-node-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  position: relative;
+  margin-bottom: -4px;
+  z-index: 3;
+}
+
+.legacy-node-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #182d61;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px #182d61, 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.legacy-node-dot-inner {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.legacy-node-stem {
+  width: 2px;
+  height: 12px;
+  background: #182d61;
+}
+
+.legacy-card-wrapper:hover .legacy-node-dot {
+  transform: scale(1.25);
+  background: #2563eb;
+  box-shadow: 0 0 0 2px #2563eb, 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+/* The Card Body - Pure White Background */
+.legacy-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 0 1rem 1.35rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.legacy-card-wrapper:hover .legacy-card {
+  background: #ffffff;
+  border-color: #2563eb;
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -6px rgba(24, 45, 97, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.2);
+}
+
+/* Year Badge (Deep Navy Pill) */
+.legacy-year-badge {
+  align-self: center;
+  margin-top: -14px;
+  margin-bottom: 0.85rem;
+  background: #0f1c3f;
+  color: #ffffff;
+  padding: 0.4rem 1.4rem;
+  border-radius: 12px;
+  font-family: var(--font-display), 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 14px rgba(15, 28, 63, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.25s ease;
+  z-index: 4;
+}
+
+.legacy-card-wrapper:hover .legacy-year-badge {
+  background: #182d61;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(24, 45, 97, 0.35);
+}
+
+/* Image Box */
+.legacy-card-image-box {
+  width: 100%;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #0f1c3f;
+  border: 1px solid #e2e8f0;
+}
+
+.legacy-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.legacy-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 70%, rgba(15, 23, 42, 0.15) 100%);
+  pointer-events: none;
+}
+
+.legacy-card-wrapper:hover .legacy-card-img {
+  transform: scale(1.05);
+}
+
+/* Body Content */
+.legacy-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 1rem;
+}
+
+.legacy-card-title {
+  font-family: var(--font-brand), 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  text-align: center;
+  margin: 0 0 0.55rem 0;
+  line-height: 1.28;
+}
+
+.legacy-card-narrative {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.legacy-card-lead {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #334155;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+}
+
+.legacy-card-sub {
+  font-size: 0.77rem;
+  line-height: 1.48;
+  color: #64748b;
+  text-align: center;
+  margin: 0;
+}
+
+/* Focus Footer Box */
+.legacy-card-focus-wrap {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.38;
+}
+
+.legacy-focus-label {
+  font-weight: 800;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+}
+
+.legacy-focus-val {
+  font-weight: 700;
+  color: #0f172a;
+  margin-left: 0.2rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Tablet & Smaller Desktops */
+@media (max-width: 1160px) {
+  .legacy-cards-grid {
+    gap: 0.85rem;
+  }
+  .legacy-card {
+    padding: 0 0.75rem 1.15rem 0.75rem;
+  }
+  .legacy-year-badge {
+    font-size: 1.05rem;
+    padding: 0.35rem 1.15rem;
+  }
+  .legacy-card-title {
+    font-size: 0.98rem;
+  }
+  .legacy-card-lead {
+    font-size: 0.78rem;
+  }
+  .legacy-card-sub {
+    font-size: 0.74rem;
+  }
+  .legacy-card-focus-wrap {
+    font-size: 0.74rem;
+  }
+}
+
+/* Tablet & Mobile: Horizontal Scroll Track */
+@media (max-width: 992px) {
+  .legacy-mobile-nav {
+    display: flex;
+  }
+
+  .legacy-track-line {
+    display: none;
+  }
+
+  .legacy-cards-grid {
+    display: flex;
+    overflow-x: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0.75rem 1.5rem 0.75rem;
+    gap: 1.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: #2563eb #f1f5f9;
+  }
+
+  .legacy-cards-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .legacy-cards-grid::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 9999px;
+  }
+
+  .legacy-cards-grid::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 9999px;
+  }
+
+  .legacy-card-wrapper {
+    flex: 0 0 280px;
+    max-width: 280px;
+    scroll-snap-align: center;
+  }
+
+  .legacy-title-row {
+    gap: 0.75rem;
+  }
+
+  .legacy-title-line {
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .legacy-card-wrapper {
+    flex: 0 0 270px;
+    max-width: 270px;
+  }
+
+  .legacy-title-line {
+    display: none;
+  }
+}
