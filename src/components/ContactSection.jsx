@@ -58,8 +58,8 @@ export default function ContactSection({ companyInfo = {} }) {
             boxSizing: 'border-box',
             minWidth: 0
           }}>
-            <div>
-              <div style={{
+            <div className="contact-card-top">
+              <div className="contact-card-icon-box" style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '14px',
@@ -72,13 +72,13 @@ export default function ContactSection({ companyInfo = {} }) {
               }}>
                 <Phone size={22} color="#2563eb" />
               </div>
-              <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#2563eb', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              <span className="contact-card-tag" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#2563eb', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 DIRECT CALLING DESK
               </span>
-              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
+              <h3 className="contact-card-title font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
                 Phone Inquiries
               </h3>
-              <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+              <p className="contact-card-desc" style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
                 Immediate rates, bulk availability & order confirmations.
               </p>
             </div>
@@ -157,8 +157,8 @@ export default function ContactSection({ companyInfo = {} }) {
             boxSizing: 'border-box',
             minWidth: 0
           }}>
-            <div>
-              <div style={{
+            <div className="contact-card-top">
+              <div className="contact-card-icon-box" style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '14px',
@@ -171,13 +171,13 @@ export default function ContactSection({ companyInfo = {} }) {
               }}>
                 <MessageSquare size={22} color="#059669" />
               </div>
-              <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#059669', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              <span className="contact-card-tag" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#059669', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 INSTANT WHATSAPP DESK
               </span>
-              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
+              <h3 className="contact-card-title font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
                 Quick BOQ Chat
               </h3>
-              <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+              <p className="contact-card-desc" style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
                 Drop your requirement list, brand choice, or BOQ PDF for instant quote.
               </p>
             </div>
@@ -229,8 +229,8 @@ export default function ContactSection({ companyInfo = {} }) {
             boxSizing: 'border-box',
             minWidth: 0
           }}>
-            <div>
-              <div style={{
+            <div className="contact-card-top">
+              <div className="contact-card-icon-box" style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '14px',
@@ -243,13 +243,13 @@ export default function ContactSection({ companyInfo = {} }) {
               }}>
                 <Mail size={22} color="#d97706" />
               </div>
-              <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#d97706', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              <span className="contact-card-tag" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#d97706', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 DIGITAL & SOCIAL CHANNELS
               </span>
-              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
+              <h3 className="contact-card-title font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
                 Email & Social Media
               </h3>
-              <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+              <p className="contact-card-desc" style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
                 Formal tender RFQs, official updates, and verified social media channels.
               </p>
             </div>
@@ -391,8 +391,8 @@ export default function ContactSection({ companyInfo = {} }) {
             boxSizing: 'border-box',
             minWidth: 0
           }}>
-            <div>
-              <div style={{
+            <div className="contact-card-top">
+              <div className="contact-card-icon-box" style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '14px',
@@ -405,13 +405,13 @@ export default function ContactSection({ companyInfo = {} }) {
               }}>
                 <Handshake size={22} color="#6366f1" />
               </div>
-              <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#6366f1', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              <span className="contact-card-tag" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#6366f1', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 BUSINESS COLLABORATION
               </span>
-              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
+              <h3 className="contact-card-title font-display" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: '0.35rem 0 0.5rem 0' }}>
                 Partner With Us
               </h3>
-              <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+              <p className="contact-card-desc" style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
                 Dealership inquiries, electrical contractor accounts & institutional vendor tie-ups.
               </p>
             </div>

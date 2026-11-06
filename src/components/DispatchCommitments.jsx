@@ -184,79 +184,43 @@ export default function DispatchCommitments({ dispatchCommitments, companyInfo, 
         </div>
 
         {/* Live SLA Calculator */}
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          border: '1px solid rgba(226, 232, 240, 0.9)',
-          borderRadius: '24px',
-          padding: '2rem 2.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '2rem',
-          boxShadow: '0 10px 30px -5px rgba(15, 23, 42, 0.06)'
-        }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2563eb', fontSize: '0.78rem', fontWeight: 800, letterSpacing: '0.08em', marginBottom: '0.35rem' }}>
+        <div className="sla-calculator-card">
+          <div className="sla-calculator-header">
+            <div className="sla-calculator-tag">
               <span className="live-indicator-dot" style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
-              <Calculator size={14} /> LIVE SLA SPEED CALCULATOR
+              <Calculator size={14} />
+              <span>LIVE SLA SPEED CALCULATOR</span>
             </div>
-            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', fontFamily: 'var(--font-display)', margin: 0 }}>
+            <h3 className="sla-calculator-title">
               Calculate Dispatch SLA For Your Project Order
-            </div>
+            </h3>
+            <p className="sla-calculator-subtitle">
+              Adjust order value to view contractual delivery turnaround across Chennai
+            </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', flexWrap: 'wrap', flex: '1 1 auto', justifyContent: 'flex-end' }}>
+          <div className="sla-calculator-controls">
             {/* Range Slider with Live On-Bar Value Badge */}
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              minWidth: '260px',
-              maxWidth: '320px',
-              width: '100%',
-              position: 'relative',
-              paddingTop: '2rem',
-              paddingBottom: '0.25rem'
-            }}>
+            <div className="sla-slider-wrapper">
               {/* Dynamic Number Badge on the bar directly tracking thumb */}
               {(() => {
                 const minVal = 20000;
                 const maxVal = 2000000;
                 const ratio = Math.max(0, Math.min(1, (calcOrderValue - minVal) / (maxVal - minVal)));
                 return (
-                  <div style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: `calc(${ratio * 100}% + ${(0.5 - ratio) * 16}px)`,
-                    transform: 'translateX(-50%)',
-                    background: slaResult.color,
-                    color: '#ffffff',
-                    fontSize: '0.82rem',
-                    fontWeight: 800,
-                    padding: '0.2rem 0.65rem',
-                    borderRadius: '20px',
-                    whiteSpace: 'nowrap',
-                    boxShadow: '0 4px 14px rgba(15, 23, 42, 0.16)',
-                    pointerEvents: 'none',
-                    transition: 'background 0.25s ease',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.25rem'
-                  }}>
+                  <div 
+                    className="sla-value-badge"
+                    style={{
+                      left: `clamp(42px, calc(${ratio * 100}% + ${(0.5 - ratio) * 16}px), calc(100% - 42px))`,
+                      background: slaResult.color
+                    }}
+                  >
                     <span>₹{calcOrderValue.toLocaleString('en-IN')}</span>
                     {/* Tooltip Downward Indicator Arrow */}
-                    <div style={{
-                      position: 'absolute',
-                      top: '100%',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: 0,
-                      height: 0,
-                      borderLeft: '5px solid transparent',
-                      borderRight: '5px solid transparent',
-                      borderTop: `5px solid ${slaResult.color}`,
-                      transition: 'border-top-color 0.25s ease'
-                    }} />
+                    <div 
+                      className="sla-value-badge-arrow"
+                      style={{ borderTop: `5px solid ${slaResult.color}` }} 
+                    />
                   </div>
                 );
               })()}
@@ -268,63 +232,41 @@ export default function DispatchCommitments({ dispatchCommitments, companyInfo, 
                 step="10000"
                 value={calcOrderValue}
                 onChange={(e) => setCalcOrderValue(Number(e.target.value))}
+                className="sla-range-slider"
                 style={{ 
-                  width: '100%', 
                   accentColor: slaResult.color, 
-                  cursor: 'pointer',
-                  margin: 0,
-                  height: '7px',
-                  borderRadius: '6px',
-                  background: `linear-gradient(to right, ${slaResult.color} 0%, ${slaResult.color} ${Math.max(0, Math.min(100, ((calcOrderValue - 20000) / (2000000 - 20000)) * 100))}%, #e2e8f0 ${Math.max(0, Math.min(100, ((calcOrderValue - 20000) / (2000000 - 20000)) * 100))}%, #e2e8f0 100%)`,
-                  outline: 'none',
-                  transition: 'accent-color 0.25s ease'
+                  background: `linear-gradient(to right, ${slaResult.color} 0%, ${slaResult.color} ${Math.max(0, Math.min(100, ((calcOrderValue - 20000) / (2000000 - 20000)) * 100))}%, #e2e8f0 ${Math.max(0, Math.min(100, ((calcOrderValue - 20000) / (2000000 - 20000)) * 100))}%, #e2e8f0 100%)`
                 }}
               />
 
               {/* Min & Max guide numbers on the bar */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                fontSize: '0.72rem',
-                fontWeight: 600,
-                color: '#94a3b8',
-                marginTop: '0.4rem',
-                userSelect: 'none'
-              }}>
+              <div className="sla-slider-ticks">
                 <span>₹20K</span>
                 <span>₹10 Lakhs</span>
                 <span>₹20 Lakhs+</span>
               </div>
             </div>
 
-            <div style={{
-              background: '#f8fafc',
-              border: `2px solid ${slaResult.color}`,
-              borderRadius: '16px',
-              padding: '0.65rem 1.25rem',
-              textAlign: 'center',
-              minWidth: '170px',
-              transition: 'border-color 0.25s ease'
-            }}>
-              <div style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>
+            <div 
+              className="sla-result-box"
+              style={{
+                borderColor: slaResult.color,
+                boxShadow: `0 8px 24px ${slaResult.color}22`
+              }}
+            >
+              <div className="sla-result-tier">
                 {slaResult.tier}
               </div>
-              <div style={{ fontSize: '1.4rem', fontWeight: 800, color: slaResult.color, fontFamily: 'var(--font-display)', transition: 'color 0.25s ease' }}>
-                {slaResult.icon} {slaResult.time}
+              <div className="sla-result-time" style={{ color: slaResult.color }}>
+                <span>{slaResult.icon}</span>
+                <span>{slaResult.time}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Asterisk Disclaimer Note */}
-        <p style={{
-          fontSize: '0.74rem',
-          color: '#94a3b8',
-          textAlign: 'center',
-          marginTop: '1.5rem',
-          marginBottom: 0
-        }}>
+        <p className="sla-disclaimer-note">
           <span className="red-asterisk">*</span>Dispatch commitments apply to verified in-stock items and standard delivery corridors during operational hours.
         </p>
 

@@ -20,8 +20,7 @@ import {
   Radio,
   Sparkles,
   Wind,
-  Lightbulb,
-  Phone
+  Lightbulb
 } from 'lucide-react';
 
 export default function Navbar({ 
@@ -76,6 +75,12 @@ export default function Navbar({
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
+    // Lock body scroll to prevent background scroll while mobile menu is open
+    const originalOverflow = document.body.style.overflow;
+    const originalTouchAction = document.body.style.touchAction;
+    document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+
     const handleOutsideClick = (event) => {
       // If clicking toggle button, let toggle handler manage it
       if (mobileToggleRef.current && mobileToggleRef.current.contains(event.target)) {
@@ -98,6 +103,8 @@ export default function Navbar({
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.touchAction = originalTouchAction;
       document.removeEventListener('mousedown', handleOutsideClick);
       document.removeEventListener('touchstart', handleOutsideClick);
       window.removeEventListener('keydown', handleKeyDown);
@@ -134,8 +141,6 @@ export default function Navbar({
     }, 200);
   };
 
-  const primaryPhone = companyInfo?.phonePrimary || '+91 9444344480';
-
   return (
     <>
       <header style={{
@@ -145,7 +150,7 @@ export default function Navbar({
         right: 0,
         width: '100%',
         height: '80px',
-        zIndex: 1000,
+        zIndex: 1002,
         background: 'rgba(255, 255, 255, 0.96)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
@@ -493,33 +498,26 @@ export default function Navbar({
           </div>
 
         </div>
+      </header>
 
-        {/* Mobile Menu Drawer with Expandable Products Accordion */}
-        {mobileMenuOpen && (
-          <div 
-            ref={mobileMenuRef}
-            style={{
-              position: 'absolute',
-              top: '80px',
-              left: 0,
-              right: 0,
-              width: '100%',
-              maxHeight: 'calc(100vh - 80px)',
-              overflowY: 'auto',
-              zIndex: 110,
-              background: 'rgba(255, 255, 255, 0.98)',
-              backdropFilter: 'blur(20px)',
-              borderBottom: '1px solid rgba(226, 232, 240, 0.9)',
-              boxShadow: '0 20px 40px rgba(15, 23, 42, 0.12)',
-              padding: '1.25rem 1.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.65rem'
-            }}
-          >
-            {/* 1. Home */}
-            <Link
-              to="/"
+      {/* Mobile Drawer Dim Backdrop Overlay for instant tap-outside to close */}
+      {mobileMenuOpen && (
+        <div 
+          className="mobile-nav-backdrop"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Menu Drawer with Expandable Products Accordion */}
+      {mobileMenuOpen && (
+        <div 
+          ref={mobileMenuRef}
+          className="mobile-nav-drawer"
+        >
+          {/* 1. Home */}
+          <Link
+            to="/"
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 display: 'flex',
@@ -666,55 +664,8 @@ export default function Navbar({
               <PhoneCall size={18} color={isContact ? '#182d61' : '#64748b'} />
               <span>Contact Us</span>
             </Link>
-
-            {/* Direct Call Button in Drawer */}
-            <div style={{ marginTop: '0.5rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0' }}>
-              <a
-                href={`tel:${primaryPhone}`}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.5rem',
-                  padding: '0.75rem',
-                  borderRadius: '12px',
-                  background: '#f8fafc',
-                  border: '1px solid #cbd5e1',
-                  color: '#0f172a',
-                  textDecoration: 'none',
-                  fontWeight: 700,
-                  fontSize: '0.9rem'
-                }}
-              >
-                <Phone size={15} color="#182d61" />
-                <span>Call Desk: {primaryPhone}</span>
-              </a>
-            </div>
           </div>
         )}
-      </header>
-
-      {/* Mobile Drawer Dim Backdrop Overlay for instant tap-outside to close */}
-      {mobileMenuOpen && (
-        <div 
-          onClick={() => setMobileMenuOpen(false)}
-          aria-hidden="true"
-          style={{
-            position: 'fixed',
-            top: '80px',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: '100%',
-            height: 'calc(100% - 80px)',
-            background: 'rgba(15, 23, 42, 0.35)',
-            backdropFilter: 'blur(3px)',
-            WebkitBackdropFilter: 'blur(3px)',
-            zIndex: 99,
-            cursor: 'pointer'
-          }}
-        />
-      )}
 
     </>
   );
