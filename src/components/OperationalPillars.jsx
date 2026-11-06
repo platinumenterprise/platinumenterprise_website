@@ -21,12 +21,12 @@ export default function OperationalPillars({ pillars, strengths, onOpenQuote }) 
   const pillarsData = [
     {
       id: 'source',
-      num: '01',
+      num: '1',
       name: 'SOURCE',
       heading: 'Multi-Brand Factory Sourcing',
       subtitle: 'Direct Multi-Brand Sourcing',
       desc: 'Direct factory procurement across 46+ premier OEM brands at wholesale rates with zero intermediary layers. Includes manufacturer test certificates (MTC) and genuine factory warranty.',
-      metric: '46+ Authorized OEM Partners',
+      metric: '46+ OEM Brands',
       color: '#182d61',
       accent: '#2563eb',
       glow: 'rgba(37, 99, 235, 0.12)',
@@ -35,7 +35,7 @@ export default function OperationalPillars({ pillars, strengths, onOpenQuote }) 
     },
     {
       id: 'stock',
-      num: '02',
+      num: '2',
       name: 'STOCK',
       heading: 'Project-Ready Stock Availability',
       subtitle: 'Project-Ready Availability',
@@ -49,7 +49,7 @@ export default function OperationalPillars({ pillars, strengths, onOpenQuote }) 
     },
     {
       id: 'supply',
-      num: '03',
+      num: '3',
       name: 'SUPPLY',
       heading: 'Synchronized Rapid Dispatch',
       subtitle: 'Synchronized Rapid Dispatch',
@@ -63,12 +63,12 @@ export default function OperationalPillars({ pillars, strengths, onOpenQuote }) 
     },
     {
       id: 'support',
-      num: '04',
+      num: '4',
       name: 'SUPPORT',
       heading: 'Technical Value Engineering & Desk',
       subtitle: 'Technical & Warranty Service',
       desc: 'Dedicated engineering support for same-day BOQ takeoff audits, single-window consolidated GST billing, and immediate over-the-counter warranty replacement desks.',
-      metric: 'Direct OEM Warranty Desk',
+      metric: 'OEM Warranty Desk',
       color: '#182d61',
       accent: '#38bdf8',
       glow: 'rgba(56, 189, 248, 0.12)',
@@ -260,7 +260,7 @@ export default function OperationalPillars({ pillars, strengths, onOpenQuote }) 
                           color: step.accent,
                           letterSpacing: '0.08em'
                         }}>
-                          PILLAR {step.num} OF 04
+                          PILLAR {step.num} OF 4
                         </div>
                         <div style={{
                           fontFamily: 'var(--font-display)',
@@ -494,43 +494,48 @@ export default function OperationalPillars({ pillars, strengths, onOpenQuote }) 
                       {step.desc}
                     </p>
 
-                    {/* Bottom Row (NO BOQ Button! Zero collision with floating WhatsApp/Back-to-top) */}
+                    {/* Bottom Row - Compact & Crisp */}
                     <div style={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       marginTop: '0.35rem',
                       paddingTop: '0.45rem',
-                      borderTop: '1px solid rgba(241, 245, 249, 0.95)'
+                      borderTop: '1px solid rgba(241, 245, 249, 0.95)',
+                      gap: '0.5rem'
                     }}>
                       {idx < pillarsData.length - 1 ? (
-                        <span 
+                        <button 
+                          type="button"
                           onClick={() => scrollToStep(idx + 1)}
                           style={{
+                            background: 'none',
+                            border: 'none',
+                            padding: 0,
                             fontSize: '0.74rem',
                             color: '#64748b',
                             cursor: 'pointer',
-                            fontWeight: 600,
-                            display: 'flex',
+                            fontWeight: 700,
+                            display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '0.35rem',
+                            gap: '0.3rem',
                             userSelect: 'none'
                           }}
                         >
-                          <span>Scroll inside for next: <strong>{pillarsData[idx + 1].name}</strong></span>
+                          <span>Next: <strong style={{ color: '#0f172a' }}>{pillarsData[idx + 1].name}</strong></span>
                           <span style={{ color: step.accent, fontWeight: 800 }}>↓</span>
-                        </span>
+                        </button>
                       ) : (
                         <span style={{
                           fontSize: '0.74rem',
                           color: '#059669',
                           fontWeight: 700,
-                          display: 'flex',
+                          display: 'inline-flex',
                           alignItems: 'center',
-                          gap: '0.35rem'
+                          gap: '0.3rem'
                         }}>
                           <CheckCircle2 size={12} />
-                          <span>All 4 Supply Pillars Verified</span>
+                          <span>All 4 Verified</span>
                         </span>
                       )}
 
@@ -540,7 +545,8 @@ export default function OperationalPillars({ pillars, strengths, onOpenQuote }) 
                         color: step.accent,
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '0.3rem'
+                        gap: '0.25rem',
+                        whiteSpace: 'nowrap'
                       }}>
                         <span>●</span> {step.metric}
                       </span>

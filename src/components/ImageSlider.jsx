@@ -426,6 +426,7 @@ export default function ImageSlider({ onOpenQuote }) {
                   <div className="slider-actions" style={{
                     display: 'flex',
                     alignItems: 'center',
+                    justifyContent: 'flex-start',
                     gap: '0.85rem',
                     marginTop: '0.5rem',
                     flexWrap: 'wrap'
@@ -771,15 +772,6 @@ export default function ImageSlider({ onOpenQuote }) {
               />
             );
           })}
-          <span style={{
-            color: '#e2e8f0',
-            fontSize: '0.72rem',
-            fontWeight: 700,
-            marginLeft: '0.35rem',
-            fontVariantNumeric: 'tabular-nums'
-          }}>
-            0{currentIndex + 1} / 0{slides.length}
-          </span>
         </div>
       </div>
 
@@ -896,6 +888,7 @@ export default function ImageSlider({ onOpenQuote }) {
           }
           .slider-inner-content {
             max-width: 100% !important;
+            width: 100% !important;
             gap: 0.32rem !important;
           }
           .slider-badge-wrap {
@@ -931,8 +924,12 @@ export default function ImageSlider({ onOpenQuote }) {
             overflow: hidden !important;
           }
           .slider-actions {
+            display: flex !important;
+            justify-content: flex-start !important;
+            align-items: center !important;
+            width: 100% !important;
             gap: 0.45rem !important;
-            margin-top: 0.2rem !important;
+            margin-top: 0.25rem !important;
           }
           .slider-actions a,
           .slider-actions button {
@@ -942,7 +939,7 @@ export default function ImageSlider({ onOpenQuote }) {
           .slider-dots {
             bottom: 0.6rem !important;
             right: 0.65rem !important;
-            padding: 0.2rem 0.5rem !important;
+            padding: 0.25rem 0.6rem !important;
           }
         }
       `}</style>

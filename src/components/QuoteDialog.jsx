@@ -116,32 +116,23 @@ ${notes}
   const [tierDropdownOpen, setTierDropdownOpen] = useState(false);
 
   const orderTiers = [
-    {
-      id: 'tier-1',
-      value: 'Below ₹1 Lakh (59 Min Dispatch)',
-      title: 'Below ₹1 Lakh',
-      slaBadge: '59-MIN DISPATCH SLA',
-      badgeClass: 'badge-emerald',
-      icon: '⚡',
-      desc: 'Express dispatch across Chennai for urgent site orders'
+    { 
+      id: 'tier-1', 
+      value: 'Below ₹1 Lakh (59 Min Dispatch)', 
+      label: 'Below ₹1 Lakh',
+      sla: '59 Min Dispatch'
     },
-    {
-      id: 'tier-2',
-      value: '₹1 Lakh – ₹10 Lakhs (99 Min Dispatch)',
-      title: '₹1 Lakh – ₹10 Lakhs',
-      slaBadge: '99-MIN DISPATCH SLA',
-      badgeClass: 'badge-blue',
-      icon: '⏱️',
-      desc: 'Priority project fulfillment for contractors & builders'
+    { 
+      id: 'tier-2', 
+      value: '₹1 Lakh – ₹10 Lakhs (99 Min Dispatch)', 
+      label: '₹1 Lakh – ₹10 Lakhs',
+      sla: '99 Min Dispatch'
     },
-    {
-      id: 'tier-3',
-      value: 'Above ₹10 Lakhs (189 Min Dispatch)',
-      title: 'Above ₹10 Lakhs',
-      slaBadge: '189-MIN DISPATCH SLA',
-      badgeClass: 'badge-gold',
-      icon: '📦',
-      desc: 'Dedicated wholesale desk & structured BOQ supply'
+    { 
+      id: 'tier-3', 
+      value: 'Above ₹10 Lakhs (189 Min Dispatch)', 
+      label: 'Above ₹10 Lakhs',
+      sla: '189 Min Dispatch'
     }
   ];
 
@@ -307,10 +298,10 @@ ${notes}
                   />
                 </div>
 
-                {/* Expected Order Value Tier (Custom Downward Interactive Dropdown - Zero Browser Bugs) */}
+                {/* Expected Order Value (Clean Simple Dropdown) */}
                 <div style={{ marginBottom: '1.25rem' }}>
                   <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#334155', display: 'block', marginBottom: '0.35rem' }}>
-                    Expected Order Value Tier (Dispatch SLA)
+                    Expected Order Value
                   </label>
                   
                   <div style={{ position: 'relative' }}>
@@ -325,24 +316,19 @@ ${notes}
                         padding: '0.75rem 1rem',
                         borderRadius: '12px',
                         background: '#ffffff',
-                        border: tierDropdownOpen ? '2px solid #2563eb' : '1.5px solid #cbd5e1',
-                        boxShadow: tierDropdownOpen ? '0 0 0 3px rgba(37, 99, 235, 0.15)' : '0 1px 3px rgba(0,0,0,0.04)',
+                        border: tierDropdownOpen ? '2px solid #2563eb' : '1px solid #cbd5e1',
+                        boxShadow: tierDropdownOpen ? '0 0 0 3px rgba(37, 99, 235, 0.15)' : 'none',
                         cursor: 'pointer',
                         textAlign: 'left'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                        <span style={{ fontSize: '1.15rem' }}>
-                          {orderTiers.find(t => t.value === orderEst)?.icon || '⚡'}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a' }}>
+                          {orderTiers.find(t => t.value === orderEst)?.label || 'Below ₹1 Lakh'}
                         </span>
-                        <div>
-                          <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
-                            {orderTiers.find(t => t.value === orderEst)?.title || 'Below ₹1 Lakh'}
-                          </div>
-                          <div style={{ fontSize: '0.72rem', color: '#059669', fontWeight: 700 }}>
-                            {orderTiers.find(t => t.value === orderEst)?.slaBadge || '59-MIN DISPATCH SLA'}
-                          </div>
-                        </div>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', background: '#ecfdf5', padding: '0.15rem 0.5rem', borderRadius: '6px', border: '1px solid #a7f3d0' }}>
+                          {orderTiers.find(t => t.value === orderEst)?.sla || '59 Min Dispatch'}
+                        </span>
                       </div>
                       <ChevronDown 
                         size={18} 
@@ -354,19 +340,19 @@ ${notes}
                       />
                     </button>
 
-                    {/* Dropdown Menu: Downward Flow, Never Overlaps Previous Inputs */}
+                    {/* Dropdown Menu */}
                     {tierDropdownOpen && (
                       <div 
                         style={{
                           position: 'absolute',
-                          top: 'calc(100% + 6px)',
+                          top: 'calc(100% + 4px)',
                           left: 0,
                           right: 0,
                           background: '#ffffff',
-                          borderRadius: '14px',
-                          border: '1.5px solid #cbd5e1',
-                          boxShadow: '0 12px 30px rgba(15, 23, 42, 0.18)',
-                          padding: '0.4rem',
+                          borderRadius: '12px',
+                          border: '1px solid #cbd5e1',
+                          boxShadow: '0 10px 25px rgba(15, 23, 42, 0.12)',
+                          padding: '0.35rem',
                           zIndex: 50
                         }}
                       >
@@ -386,28 +372,32 @@ ${notes}
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
                                 padding: '0.65rem 0.85rem',
-                                borderRadius: '10px',
+                                borderRadius: '8px',
                                 background: isSelected ? 'rgba(37, 99, 235, 0.08)' : 'transparent',
-                                border: isSelected ? '1px solid rgba(37, 99, 235, 0.3)' : '1px solid transparent',
+                                color: isSelected ? '#182d61' : '#0f172a',
+                                fontWeight: isSelected ? 700 : 500,
+                                fontSize: '0.88rem',
+                                border: 'none',
                                 cursor: 'pointer',
                                 textAlign: 'left',
-                                marginBottom: '0.2rem'
+                                transition: 'background 0.15s ease'
+                              }}
+                              onMouseEnter={(e) => {
+                                if (!isSelected) e.currentTarget.style.background = '#f8fafc';
+                              }}
+                              onMouseLeave={(e) => {
+                                if (!isSelected) e.currentTarget.style.background = 'transparent';
                               }}
                             >
                               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                                <span style={{ fontSize: '1.15rem' }}>{tier.icon}</span>
-                                <div>
-                                  <div style={{ fontSize: '0.86rem', fontWeight: isSelected ? 800 : 600, color: isSelected ? '#182d61' : '#0f172a' }}>
-                                    {tier.title}
-                                  </div>
-                                  <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
-                                    {tier.desc}
-                                  </div>
-                                </div>
+                                <span style={{ fontSize: '0.88rem', fontWeight: isSelected ? 700 : 500 }}>
+                                  {tier.label}
+                                </span>
+                                <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: '#ecfdf5', padding: '0.12rem 0.45rem', borderRadius: '6px', border: '1px solid #a7f3d0' }}>
+                                  {tier.sla}
+                                </span>
                               </div>
-                              <span className={`badge ${tier.badgeClass}`} style={{ fontSize: '0.65rem', padding: '0.15rem 0.45rem', flexShrink: 0 }}>
-                                {tier.slaBadge}
-                              </span>
+                              {isSelected && <span style={{ color: '#2563eb', fontWeight: 800 }}>✓</span>}
                             </button>
                           );
                         })}

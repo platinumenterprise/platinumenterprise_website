@@ -224,94 +224,70 @@ export default function FounderNote({ founder = {} }) {
 
         </div>
 
-        {/* 3. Full-Width Metric Strip: 4 in a row on Desktop, balanced 2x2 on Tablet/iPad, 1 col on Mobile */}
+        {/* 3. Metric Strip: Single Line on Desktop, 2 Columns (Text Left, Numbers Right) on Mobile */}
         <div
-          className="founder-stats-4col reveal-on-scroll reveal-delay-3"
+          className="founder-stats-strip founder-stats-4col founder-stats-2col reveal-on-scroll reveal-delay-3"
           style={{
             marginTop: '2.5rem',
-            paddingTop: '1.75rem',
+            paddingTop: '2rem',
             borderTop: '1px solid rgba(226, 232, 240, 0.85)'
           }}
         >
           {/* Stat 1: 50+ */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            <div style={{
-              fontSize: 'clamp(2.2rem, 3vw, 2.75rem)',
-              fontWeight: 800,
-              color: '#2563eb',
-              fontFamily: 'var(--font-display)',
-              lineHeight: 1
-            }}>
+          <div className="founder-stat-item">
+            <div className="founder-stat-num" style={{ color: '#2563eb' }}>
               50+
             </div>
-            <div>
-              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>
+            <div className="founder-stat-content">
+              <div className="founder-stat-title">
                 Years of Heritage
               </div>
-              <div style={{ fontSize: '0.76rem', color: '#64748b', marginTop: '0.15rem' }}>
+              <div className="founder-stat-desc">
                 Built on integrity & trust
               </div>
             </div>
           </div>
 
           {/* Stat 2: 20K+ Projects */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            <div style={{
-              fontSize: 'clamp(2.2rem, 3vw, 2.75rem)',
-              fontWeight: 800,
-              color: '#059669',
-              fontFamily: 'var(--font-display)',
-              lineHeight: 1
-            }}>
+          <div className="founder-stat-item">
+            <div className="founder-stat-num" style={{ color: '#059669' }}>
               20K+
             </div>
-            <div>
-              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>
+            <div className="founder-stat-content">
+              <div className="founder-stat-title">
                 Clients
               </div>
-              <div style={{ fontSize: '0.76rem', color: '#64748b', marginTop: '0.15rem' }}>
+              <div className="founder-stat-desc">
                 Served across South India
               </div>
             </div>
           </div>
 
           {/* Stat 3: 46+ Authorized Brands */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            <div style={{
-              fontSize: 'clamp(2.2rem, 3vw, 2.75rem)',
-              fontWeight: 800,
-              color: '#f59e0b',
-              fontFamily: 'var(--font-display)',
-              lineHeight: 1
-            }}>
+          <div className="founder-stat-item">
+            <div className="founder-stat-num" style={{ color: '#f59e0b' }}>
               46+
             </div>
-            <div>
-              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>
+            <div className="founder-stat-content">
+              <div className="founder-stat-title">
                 Authorized Brands
               </div>
-              <div style={{ fontSize: '0.76rem', color: '#64748b', marginTop: '0.15rem' }}>
+              <div className="founder-stat-desc">
                 Direct tier-1 OEM factory supply
               </div>
             </div>
           </div>
 
           {/* Stat 4: 100% Genuine OEM */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            <div style={{
-              fontSize: 'clamp(2.2rem, 3vw, 2.75rem)',
-              fontWeight: 800,
-              color: '#0284c7',
-              fontFamily: 'var(--font-display)',
-              lineHeight: 1
-            }}>
+          <div className="founder-stat-item">
+            <div className="founder-stat-num" style={{ color: '#0284c7' }}>
               100%
             </div>
-            <div>
-              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>
+            <div className="founder-stat-content">
+              <div className="founder-stat-title">
                 Genuine OEM
               </div>
-              <div style={{ fontSize: '0.76rem', color: '#64748b', marginTop: '0.15rem' }}>
+              <div className="founder-stat-desc">
                 Direct factory warranty covered
               </div>
             </div>

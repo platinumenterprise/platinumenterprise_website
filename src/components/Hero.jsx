@@ -183,19 +183,22 @@ export default function Hero({ companyInfo, stats, onOpenQuote }) {
             inset: 0,
             background: 'linear-gradient(180deg, transparent 35%, rgba(15, 23, 42, 0.88) 100%)'
           }} />
-          <div style={{
-            position: 'absolute',
-            bottom: 'clamp(16px, 3vw, 24px)',
-            left: 'clamp(16px, 3vw, 32px)',
-            right: 'clamp(16px, 3vw, 32px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '0.85rem',
-            textAlign: 'left'
-          }}>
-            <div style={{ maxWidth: '620px' }}>
+          <div 
+            className="hero-brand-profile-bar"
+            style={{
+              position: 'absolute',
+              bottom: 'clamp(16px, 3vw, 24px)',
+              left: 'clamp(16px, 3vw, 32px)',
+              right: 'clamp(16px, 3vw, 32px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '0.85rem',
+              textAlign: 'left'
+            }}
+          >
+            <div className="hero-brand-profile-text" style={{ maxWidth: '620px' }}>
               <span style={{ fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.12em', color: '#38bdf8', textTransform: 'uppercase' }}>
                 DIRECT FACTORY TIE-UPS
               </span>
@@ -207,7 +210,7 @@ export default function Hero({ companyInfo, stats, onOpenQuote }) {
               href={companyInfo?.companyProfileUrl || "https://drive.google.com/drive/folders/1_WxXgsV7jzrvNlSoCgCW3psk07MyeVvv"}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-tri-gradient"
+              className="btn-tri-gradient hero-brand-profile-btn"
               style={{
                 padding: '0.65rem 1.4rem',
                 fontSize: 'clamp(0.78rem, 1.8vw, 0.85rem)',

@@ -53,10 +53,10 @@ export default function AnimatedStat({
   }, [targetNumber, duration, hasAnimated]);
 
   return (
-    <div ref={statRef} className="stat-card-animated reveal-on-scroll">
+    <div ref={statRef} className="stat-card-animated reveal-on-scroll" style={{ textAlign: 'center' }}>
       <div 
         className="stat-number-animated" 
-        style={{ color }}
+        style={{ color, textAlign: 'center' }}
       >
         <span>{prefix}</span>
         <span>{currentValue}</span>
@@ -70,7 +70,8 @@ export default function AnimatedStat({
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
           marginBottom: '0.2rem',
-          fontFamily: 'var(--font-display)'
+          fontFamily: 'var(--font-display)',
+          textAlign: 'center'
         }}>
           {label}
         </div>
@@ -80,7 +81,8 @@ export default function AnimatedStat({
           fontSize: '0.8rem',
           color: '#64748b',
           fontWeight: 500,
-          lineHeight: 1.45
+          lineHeight: 1.45,
+          textAlign: 'center'
         }}>
           {description}
         </div>
