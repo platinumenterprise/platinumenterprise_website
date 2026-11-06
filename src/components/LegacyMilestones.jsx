@@ -147,7 +147,6 @@ export default function LegacyMilestones() {
                     src={item.image} 
                     alt={`${item.title} (${item.year})`} 
                     className="legacy-card-img"
-                    loading="lazy"
                   />
                   <div className="legacy-card-image-overlay" />
                 </div>

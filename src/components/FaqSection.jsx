@@ -1,6 +1,5 @@
-import React from 'react';
-import * as Accordion from '@radix-ui/react-accordion';
-import { ChevronDown, HelpCircle, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const defaultFaqs = [
   {
@@ -37,6 +36,13 @@ export default function FaqSection({ faqList }) {
   // Ensure all 7 FAQs are always rendered
   const displayFaqs = (faqList && faqList.length >= 7) ? faqList : defaultFaqs;
 
+  // Single active index: opening any FAQ automatically closes all other FAQs
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const toggleFaq = (idx) => {
+    setOpenIndex((prevIndex) => (prevIndex === idx ? null : idx));
+  };
+
   return (
     <section 
       id="faq" 
@@ -63,30 +69,50 @@ export default function FaqSection({ faqList }) {
           </p>
         </div>
 
-        {/* Radix UI Accordion */}
-        <Accordion.Root 
-          type="single" 
-          collapsible 
-          defaultValue="item-0" 
-          className="accordion-root"
-          style={{ width: '100%' }}
-        >
-          {displayFaqs.map((item, idx) => (
-            <Accordion.Item key={idx} value={`item-${idx}`} className={`accordion-item reveal-on-scroll reveal-delay-${(idx % 4) + 1}`}>
-              <Accordion.Header>
-                <Accordion.Trigger className="accordion-trigger">
+        {/* Single-open Accordion List */}
+        <div className="accordion-root" style={{ width: '100%' }}>
+          {displayFaqs.map((item, idx) => {
+            const isOpen = openIndex === idx;
+
+            return (
+              <div 
+                key={idx} 
+                className={`accordion-item ${isOpen ? 'is-open' : ''}`}
+                data-state={isOpen ? 'open' : 'closed'}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(idx)}
+                  className="accordion-trigger"
+                  data-state={isOpen ? 'open' : 'closed'}
+                  aria-expanded={isOpen}
+                >
                   <span>{item.question}</span>
-                  <ChevronDown size={19} className="accordion-chevron" />
-                </Accordion.Trigger>
-              </Accordion.Header>
-              <Accordion.Content className="accordion-content">
-                <div className="accordion-body">
-                  {item.answer}
+                  <ChevronDown 
+                    size={19} 
+                    className="accordion-chevron"
+                    style={{
+                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)',
+                      color: isOpen ? '#2563eb' : '#64748b'
+                    }} 
+                  />
+                </button>
+
+                <div 
+                  className={`accordion-content ${isOpen ? 'is-open' : ''}`}
+                  data-state={isOpen ? 'open' : 'closed'}
+                >
+                  <div className="accordion-content-inner">
+                    <div className="accordion-body">
+                      {item.answer}
+                    </div>
+                  </div>
                 </div>
-              </Accordion.Content>
-            </Accordion.Item>
-          ))}
-        </Accordion.Root>
+              </div>
+            );
+          })}
+        </div>
 
       </div>
     </section>
